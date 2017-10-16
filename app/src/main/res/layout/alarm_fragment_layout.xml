@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/alarm_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="闹钟"
-        android:textSize="100px"
-        android:gravity="center"
-        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+    />
+    <ImageView
+        android:id="@+id/add_alarm_imageview"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/add_alarm"
+        android:layout_marginBottom="10dp"
         />
 
-</LinearLayout>
+</RelativeLayout>
