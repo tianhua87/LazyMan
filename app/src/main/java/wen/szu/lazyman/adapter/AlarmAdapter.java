@@ -15,6 +15,7 @@ import java.util.List;
 
 import wen.szu.lazyman.R;
 import wen.szu.lazyman.model.Alarm;
+import wen.szu.lazyman.utils.DateUtil;
 
 /**
  * Created by wen on 2017/10/16.
@@ -47,7 +48,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder>{
             holder.swift_radioButton.setChecked(true);
         else
             holder.swift_radioButton.setChecked(false);
-        holder.timeTextview.setText(alarm.getTime().toString());
+        holder.timeTextview.setText(DateUtil.getHourAndMinute(alarm.getTime()));
         StringBuilder date=new StringBuilder();
         for (int i=0;i<alarm.getDate().size()-1;i++)
             date.append(alarm.getDate().get(i)).append(',');
