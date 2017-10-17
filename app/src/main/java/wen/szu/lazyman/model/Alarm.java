@@ -2,7 +2,6 @@ package wen.szu.lazyman.model;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by wen on 2017/10/16.
@@ -19,6 +18,7 @@ public class Alarm {
     public static String SUNDAY="周日";
     public static String EVERY_DAY="每天";
 
+    private int id;
     private Date time;
     private List<String> date;
     private boolean isOpened;
@@ -27,6 +27,21 @@ public class Alarm {
         this.time = time;
         this.date = date;
         this.isOpened = isOpened;
+    }
+
+    public Alarm(int id,Date time, List<String> date,  boolean isOpened) {
+        this.time = time;
+        this.date = date;
+        this.id = id;
+        this.isOpened = isOpened;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public List<String> getDate() {

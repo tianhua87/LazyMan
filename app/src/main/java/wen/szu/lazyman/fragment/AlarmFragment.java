@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +18,7 @@ import java.util.List;
 import wen.szu.lazyman.R;
 import wen.szu.lazyman.adapter.AlarmAdapter;
 import wen.szu.lazyman.model.Alarm;
+import wen.szu.lazyman.view.RecycleViewDivider;
 
 /**
  * Created by wen on 2017/10/15.
@@ -36,7 +36,7 @@ public class AlarmFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         if(rootView==null) {
-            rootView = inflater.inflate(R.layout.alarm_fragment_layout, container, false);
+            rootView = inflater.inflate(R.layout.alarm_fragment_layout, container,false);
         }
         initDate();
         initView();
@@ -51,7 +51,7 @@ public class AlarmFragment extends Fragment{
         alarmAdapter=new AlarmAdapter(getActivity(),R.layout.alarm_item_layout,alarmList);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
         alarmListView.setLayoutManager(linearLayoutManager);
-
+        alarmListView.addItemDecoration(new RecycleViewDivider(getActivity(),LinearLayoutManager.HORIZONTAL));
         alarmListView.setAdapter(alarmAdapter);
 
     }
