@@ -11,12 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import wen.szu.lazyman.R;
 import wen.szu.lazyman.adapter.AlarmAdapter;
+import wen.szu.lazyman.db.AlarmTableHelper;
 import wen.szu.lazyman.model.Alarm;
 import wen.szu.lazyman.view.RecycleViewDivider;
 
@@ -51,20 +50,29 @@ public class AlarmFragment extends Fragment{
         alarmAdapter=new AlarmAdapter(getActivity(),R.layout.alarm_item_layout,alarmList);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
         alarmListView.setLayoutManager(linearLayoutManager);
+        //分割线
         alarmListView.addItemDecoration(new RecycleViewDivider(getActivity(),LinearLayoutManager.HORIZONTAL));
         alarmListView.setAdapter(alarmAdapter);
 
     }
     void initDate(){
-        alarmList=new ArrayList<>();
-        List<String> dList=new ArrayList<>();
-        dList.add(Alarm.MONDAY);
-        dList.add(Alarm.WEDNESDAY);
-        alarmList.add(new Alarm(new Date(),dList,true));
-        alarmList.add(new Alarm(new Date(),dList,false));
-        alarmList.add(new Alarm(new Date(),dList,true));
-        alarmList.add(new Alarm(new Date(),dList,false));
-        alarmList.add(new Alarm(new Date(),dList,true));
+//        alarmList=new ArrayList<>();
+//        List<String> dList=new ArrayList<>();
+//        dList.add(Alarm.MONDAY);
+//        dList.add(Alarm.WEDNESDAY);
+//        alarmList.add(new Alarm(new Date(),dList,true));
+//        alarmList.add(new Alarm(new Date(),dList,false));
+//        alarmList.add(new Alarm(new Date(),dList,true));
+//        alarmList.add(new Alarm(new Date(),dList,false));
+//        alarmList.add(new Alarm(new Date(),dList,true));
+//        AlarmTableHelper.addAlarm(new Alarm(new Date(),dList,true));
+//        AlarmTableHelper.addAlarm(new Alarm(new Date(),dList,true));
+//        AlarmTableHelper.addAlarm(new Alarm(new Date(),dList,true));
+//        AlarmTableHelper.addAlarm(new Alarm(new Date(),dList,true));
+//        AlarmTableHelper.addAlarm(new Alarm(new Date(),dList,true));
+//        AlarmTableHelper.addAlarm(new Alarm(new Date(),dList,true));
+//        AlarmTableHelper.addAlarm(new Alarm(new Date(),dList,true));
+        alarmList=AlarmTableHelper.getAlarmList();
     }
 
     @Override
