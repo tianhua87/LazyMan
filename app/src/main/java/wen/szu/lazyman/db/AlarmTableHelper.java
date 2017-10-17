@@ -35,6 +35,10 @@ public class AlarmTableHelper {
             else
                 values.put(LazyDatabaseHelp.KEY_ALARM_ISOPENED,0);
             db.insert(LazyDatabaseHelp.TABLE_ALARM,null,values);
+            //获取插入的那条数据的自增长ID
+            Cursor cursor=db.rawQuery("select last_insert_rowid() from "+LazyDatabaseHelp.TABLE_ALARM,null);
+            cursor.moveToFirst();
+            alarm.setId(cursor.getInt(0));
 
         }catch (Exception e){
             Log.e("LazyDatabase","addAlarm 出现错误  "+e.getMessage());
