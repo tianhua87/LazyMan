@@ -1,5 +1,6 @@
 package wen.szu.lazyman.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import wen.szu.lazyman.R;
+import wen.szu.lazyman.activity.NewAlarmActivity;
 import wen.szu.lazyman.adapter.AlarmAdapter;
 import wen.szu.lazyman.db.AlarmTableHelper;
 import wen.szu.lazyman.model.Alarm;
@@ -54,12 +57,21 @@ public class AlarmFragment extends Fragment{
         alarmListView.addItemDecoration(new RecycleViewDivider(getActivity(),LinearLayoutManager.HORIZONTAL));
         alarmListView.setAdapter(alarmAdapter);
 
+        addAlarmImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), NewAlarmActivity.class);
+                intent.putExtra("title","new");
+                startActivity(intent);
+            }
+        });
+
     }
     void initDate(){
-//        alarmList=new ArrayList<>();
-//        List<String> dList=new ArrayList<>();
-//        dList.add(Alarm.MONDAY);
-//        dList.add(Alarm.WEDNESDAY);
+        alarmList=new ArrayList<>();
+        List<String> dList=new ArrayList<>();
+        dList.add(Alarm.MONDAY);
+        dList.add(Alarm.WEDNESDAY);
 //        alarmList.add(new Alarm(new Date(),dList,true));
 //        alarmList.add(new Alarm(new Date(),dList,false));
 //        alarmList.add(new Alarm(new Date(),dList,true));
